@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 export const AddCategory = ({setCategories}) => {
 
-    const [inputValue, setInputValue] = useState();
+    const [inputValue, setInputValue] = useState('');
 
     const handleImputChange = (e) => {
         setInputValue(e.target.value);
@@ -11,7 +11,8 @@ export const AddCategory = ({setCategories}) => {
 
     const handleSubmit = (e) => {
         if (inputValue.trim().length !== 0) {
-            setCategories(category => [...category, inputValue]);
+            setCategories(category => [inputValue, ...category]);
+            setInputValue('');
         }
 
         e.preventDefault();
